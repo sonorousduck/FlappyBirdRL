@@ -30,7 +30,7 @@ class DQNAgent:
         model.add(Dense(256, activation="tanh"))
         model.add(Dense(512, activation="tanh"))
         model.add(Dense(2, activation="linear"))
-        optimizer = Adam(learning_rate=3e-4, decay=13-5)
+        optimizer = Adam(learning_rate=3e-4, decay=1e-5)
 
 
         model.compile(optimizer, 'binary_crossentropy')
