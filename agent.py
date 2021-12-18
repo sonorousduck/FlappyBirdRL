@@ -11,9 +11,9 @@ from keras.optimizer_v2.adam import Adam
 class DQNAgent:
     def __init__(self):
         self.env = flappy_bird_gym.make("FlappyBird-v0")
-        self.gamma = 0.99
+        self.gamma = 0.95
         self.epsilon = 1.0
-        self.epsilon_decay = 0.995
+        self.epsilon_decay = 0.9995
         self.epsilon_min = 0.05
         self.batch_size = 64
         self.state_space = self.env.observation_space.shape[0]
@@ -30,7 +30,7 @@ class DQNAgent:
         model.add(Dense(256, activation="tanh"))
         model.add(Dense(512, activation="tanh"))
         model.add(Dense(2, activation="linear"))
-        optimizer = Adam(learning_rate=3e-4, decay=1e-5)
+        optimizer = Adam(learning_rate=0.01, decay=1e-5)
 
 
         model.compile(optimizer, 'binary_crossentropy')

@@ -7,7 +7,8 @@ env = flappy_bird_gym.make("FlappyBird-v0")
 state_space = env.observation_space.shape[0]
 agent = DQNAgent()
 epochs = 7000
-max_score = 25 
+max_score = 100
+
 
 
 for i in range(epochs):
@@ -17,7 +18,7 @@ for i in range(epochs):
     score = 0
 
     print(f"Epoch: {i}")
-
+    print(f"Epsilon: {agent.epsilon}")
 
     while not done:
         action = agent.act(state)
@@ -45,7 +46,7 @@ for i in range(epochs):
         
         if i > 10:
             agent.learn()
-            agent.decreaseEpsilon()
+    agent.decreaseEpsilon()
 
 
 
